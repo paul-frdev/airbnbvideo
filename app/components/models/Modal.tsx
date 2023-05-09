@@ -1,6 +1,5 @@
-'use client'
-import React, { useCallback, useEffect, useState } from 'react'
-
+'use client';
+import React, { useCallback, useEffect, useState } from 'react';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -14,12 +13,23 @@ interface ModalProps {
   body?: React.ReactElement;
   footer?: React.ReactElement;
 }
-export const Modal: React.FC<ModalProps> = ({ onClose, onSubmit, secondaryAction, isOpen, disabled, title, actionLabel, secondaryLabel, body, footer }) => {
+export const Modal: React.FC<ModalProps> = ({
+  onClose,
+  onSubmit,
+  secondaryAction,
+  isOpen,
+  disabled,
+  title,
+  actionLabel,
+  secondaryLabel,
+  body,
+  footer,
+}) => {
   const [showModal, setShowModal] = useState(isOpen);
 
   useEffect(() => {
-    setShowModal(isOpen)
-  }, [isOpen])
+    setShowModal(isOpen);
+  }, [isOpen]);
 
   const handleClose = useCallback(() => {
     if (disabled) {
@@ -29,9 +39,8 @@ export const Modal: React.FC<ModalProps> = ({ onClose, onSubmit, secondaryAction
     setShowModal(false);
 
     setTimeout(() => {
-      onClose()
+      onClose();
     }, 300);
-
   }, [disabled, onClose]);
 
   const handleSubmit = useCallback(() => {
@@ -55,12 +64,11 @@ export const Modal: React.FC<ModalProps> = ({ onClose, onSubmit, secondaryAction
   }
   return (
     <>
-    <div className='flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800/70'>
-      <div className='relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full lg:h-auto md:h-auto'>
-        {/* Content */}
-        
+      <div className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-neutral-800/70 outline-none focus:outline-none'>
+        <div className='relative mx-auto my-6 h-full w-full md:h-auto md:w-4/6 lg:h-auto lg:w-3/6 xl:w-2/5'>
+          {/* Content */}
+        </div>
       </div>
-    </div>
     </>
-  )
-}
+  );
+};

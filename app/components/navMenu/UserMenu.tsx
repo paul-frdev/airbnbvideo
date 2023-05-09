@@ -1,27 +1,27 @@
-"use client"
-import React, { useCallback, useState } from 'react'
-import { AiOutlineMenu } from "react-icons/ai"
-import { Avatar } from '../Avatar'
-import { MenuItem } from './MenuItem'
+'use client';
+import React, { useCallback, useState } from 'react';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { Avatar } from '../Avatar';
+import { MenuItem } from './MenuItem';
 
 export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
-    setIsOpen((value) => !value)
-  }, [])
+    setIsOpen((value) => !value);
+  }, []);
   return (
     <div className='relative'>
       <div className='flex flex-row items-center gap-3'>
         <div
-          className='hidden md:block text-sm font-semibold px-3 py-4 rounded-full hover:bg-neutral-100 transition cursor-pointer'
-          onClick={() => { }}
+          className='hidden cursor-pointer rounded-full px-3 py-4 text-sm font-semibold transition hover:bg-neutral-100 md:block'
+          onClick={() => {}}
         >
           Airbnb your home
         </div>
         <div
           onClick={toggleOpen}
-          className='p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
+          className='flex cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-neutral-200 p-4 transition hover:shadow-md md:px-2 md:py-1'
         >
           <AiOutlineMenu size={18} />
           <div className='hidden md:block'>
@@ -33,23 +33,17 @@ export const UserMenu = () => {
         style={{
           visibility: !isOpen ? 'hidden' : 'visible',
           opacity: !isOpen ? '0' : '1',
-          transition: 'opacity .3s'
+          transition: 'opacity .3s',
         }}
-        className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'
+        className='absolute right-0 top-12 w-[40vw] overflow-hidden rounded-xl bg-white text-sm shadow-md md:w-3/4'
       >
-        <div className='flex flex-col cursor-pointer'>
+        <div className='flex cursor-pointer flex-col'>
           <>
-            <MenuItem
-              onClick={() => { }}
-              label='Login'
-            />
-             <MenuItem
-              onClick={() => { }}
-              label='Sign Up'
-            />
+            <MenuItem onClick={() => {}} label='Login' />
+            <MenuItem onClick={() => {}} label='Sign Up' />
           </>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

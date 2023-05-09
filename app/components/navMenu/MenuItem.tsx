@@ -1,5 +1,5 @@
-"use client"
-import React from 'react'
+'use client';
+import React from 'react';
 
 interface MenuItemProps {
   onClick: () => void;
@@ -7,8 +7,11 @@ interface MenuItemProps {
 }
 export const MenuItem: React.FC<MenuItemProps> = ({ onClick, label }) => {
   return (
-    <div onClick={onClick} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>
+    <div
+      onClick={onClick}
+      className='px-4 py-3 font-semibold transition hover:bg-neutral-100'
+    >
       {label}
     </div>
-  )
-}
+  );
+};
