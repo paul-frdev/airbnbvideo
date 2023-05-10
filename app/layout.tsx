@@ -1,7 +1,9 @@
-import { Modal } from './components/models/Modal';
+import { Modal } from './components/modals/Modal';
+import { RegisterModal } from './components/modals/RegisterModal';
 import { Navbar } from './components/navMenu/Navbar';
 import './globals.css';
 import { Nunito } from 'next/font/google';
+import { ToastProvider } from './providers/ToastProvider';
 
 const font = Nunito({ subsets: ['latin'] });
 
@@ -18,8 +20,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={font.className}>
+        <ToastProvider />
         <Navbar />
-        <Modal isOpen />
+        <RegisterModal />
         {children}
       </body>
     </html>
