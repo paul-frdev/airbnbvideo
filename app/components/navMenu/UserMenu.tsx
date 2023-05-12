@@ -5,11 +5,11 @@ import { Avatar } from '../Avatar';
 import { MenuItem } from './MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLogInModal';
-import { User } from '@prisma/client';
 import { signOut } from 'next-auth/react';
+import { SafeUser } from '@/app/types';
 
 interface UserMenuProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 export const UserMenu = ({ currentUser }: UserMenuProps) => {
   const registerModal = useRegisterModal();
@@ -35,7 +35,7 @@ export const UserMenu = ({ currentUser }: UserMenuProps) => {
         >
           <AiOutlineMenu size={18} />
           <div className='hidden md:block'>
-            <Avatar />
+            <Avatar scr={currentUser?.image} />
           </div>
         </div>
       </div>

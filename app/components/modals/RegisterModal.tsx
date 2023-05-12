@@ -9,6 +9,7 @@ import { Modal } from './Modal';
 import { Heading } from '../Heading';
 import { Input } from '../inputs/Input';
 import { Button } from '../Button';
+import { signIn } from 'next-auth/react';
 
 export const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -75,8 +76,8 @@ export const RegisterModal = () => {
   const footerContent = (
     <div className='mt-3 flex flex-col gap-4'>
       <hr />
-      <Button outline label='Continue with Google' icon={FcGoogle} />
-      <Button outline label='Continue with GitHub' icon={AiFillGithub} />
+      <Button onClick={() => signIn('google')} outline label='Continue with Google' icon={FcGoogle} />
+      <Button onClick={() => signIn('github')} outline label='Continue with GitHub' icon={AiFillGithub} />
       <div className='mb-2 mt-4 text-center font-light text-neutral-500'>
         <div className='flex items-center justify-center gap-2'>
           <div> Already have an account?</div>

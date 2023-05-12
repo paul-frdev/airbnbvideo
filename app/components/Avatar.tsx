@@ -3,10 +3,13 @@ import Image from 'next/image';
 import React from 'react';
 import AvatarImage from '../../public/images/avatar.jpeg';
 
-export const Avatar = () => {
+interface AvatarProps {
+  scr: string | null | undefined;
+}
+export const Avatar = ({ scr }: AvatarProps) => {
   return (
     <Image
-      src={AvatarImage}
+      src={scr || AvatarImage}
       className='rounded-full'
       height={30}
       width={30}
