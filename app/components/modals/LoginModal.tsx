@@ -52,9 +52,7 @@ export const LoginModal = () => {
 
   const handleChangeModal = () => {
     loginModal.onClose();
-    setTimeout(() => {
-      registerModal.onOpen();
-    }, 300);
+    registerModal.onOpen();
   };
 
   const bodyContent = (

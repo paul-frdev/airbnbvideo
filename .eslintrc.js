@@ -28,6 +28,8 @@ module.exports = {
         '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
         '@typescript-eslint/no-unsafe-member-access': 'warn',
         '@typescript-eslint/no-unsafe-call': 'warn',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-unsafe-return': 'warn',
       },
     },
   ],

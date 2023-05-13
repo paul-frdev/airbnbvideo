@@ -10,9 +10,11 @@ import { Heading } from '../Heading';
 import { Input } from '../inputs/Input';
 import { Button } from '../Button';
 import { signIn } from 'next-auth/react';
+import useLoginModal from '@/app/hooks/useLogInModal';
 
 export const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -40,6 +42,11 @@ export const RegisterModal = () => {
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const handleChangeModal = () => {
+    registerModal.onClose();
+    loginModal.onOpen();
   };
 
   const bodyContent = (
@@ -92,7 +99,7 @@ export const RegisterModal = () => {
         <div className='flex items-center justify-center gap-2'>
           <div> Already have an account?</div>
           <div
-            onClick={registerModal.onClose}
+            onClick={handleChangeModal}
             className='cursor-pointer text-neutral-800 hover:underline'
           >
             log in
