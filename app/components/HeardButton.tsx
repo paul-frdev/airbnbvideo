@@ -1,19 +1,23 @@
 'use client';
-import { Listing } from '@prisma/client';
 import React from 'react';
 import { SafeUser } from '../types';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import useFavorites from '../hooks/useFavorites';
 
 interface HeardButtonProps {
-  dataId: string;
-  currentUser: SafeUser | null | undefined;
+  listingId: string;
+  currentUser: SafeUser | null;
 }
 export const HeardButton: React.FC<HeardButtonProps> = ({
-  dataId,
+  listingId,
   currentUser,
 }) => {
-  const hasFavorited = false;
-  const toggleFavorite = () => {};
+  const { hasFavorited, toggleFavorite } = useFavorites({
+    listingId,
+    currentUser,
+  });
+  console.log('currentUser', currentUser);
+
   return (
     <div
       onClick={toggleFavorite}

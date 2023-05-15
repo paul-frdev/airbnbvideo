@@ -37,7 +37,7 @@ export const RegisterModal = () => {
         registerModal.onClose();
       })
       .catch((error) => {
-        console.log(error);
+        throw new Error(error);
       })
       .finally(() => {
         setIsLoading(false);

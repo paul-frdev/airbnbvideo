@@ -32,6 +32,8 @@ export const ListingCard: React.FC<ListingCardProps> = ({
 
   const location = getByValue(data.locationValue);
 
+  console.log('currentUser', currentUser);
+
   const handleCancel = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation();
@@ -77,7 +79,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
             className='h-full w-full object-cover transition group-hover:scale-110'
           />
           <div className='absolute right-3 top-3'>
-            <HeardButton dataId={data.id} currentUser={currentUser} />
+            <HeardButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
         <div className='text-lg font-semibold'>
