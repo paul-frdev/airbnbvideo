@@ -6,7 +6,7 @@ import useFavorites from '../hooks/useFavorites';
 
 interface HeardButtonProps {
   listingId: string;
-  currentUser: SafeUser | null;
+  currentUser: SafeUser | null | undefined;
 }
 export const HeardButton: React.FC<HeardButtonProps> = ({
   listingId,
@@ -16,7 +16,6 @@ export const HeardButton: React.FC<HeardButtonProps> = ({
     listingId,
     currentUser,
   });
-  console.log('currentUser', currentUser);
 
   return (
     <div
