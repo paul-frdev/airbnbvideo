@@ -54,7 +54,7 @@ export const ListingInfo: FC<ListingInfoProps> = ({
       <hr />
       {category && (
         <ListingCategory
-          icon={category.icon}
+          icon={category.icon as IconType}
           label={category.label}
           description={category.description}
         />
@@ -62,7 +62,7 @@ export const ListingInfo: FC<ListingInfoProps> = ({
       <hr />
       <p className='text-lg font-light text-neutral-500'>{description}</p>
       <hr />
-      <Map center={coordinates} />
+      <Map center={coordinates as number[]} />
     </div>
   );
 };
