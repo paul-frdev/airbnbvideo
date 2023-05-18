@@ -1,7 +1,6 @@
 'use client';
 import { categories } from '@/app/constants';
-import { SafeListing, SafeUser } from '@/app/types';
-import { Reservation } from '@prisma/client';
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ListingHead } from './ListingHead';
 import { ListingInfo } from './ListingInfo';
@@ -23,7 +22,7 @@ interface ListingItemProps {
     user: SafeUser;
   };
   currentUser: SafeUser | null;
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
 }
 export const ListingItem: React.FC<ListingItemProps> = ({
   listing,
@@ -36,7 +35,6 @@ export const ListingItem: React.FC<ListingItemProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price)
   const [dateRange, setDateRange] = useState<Range>(initialDateRange)
-
 
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
@@ -61,7 +59,6 @@ export const ListingItem: React.FC<ListingItemProps> = ({
         end: new Date(reservation.endDate)
       })
       dates = [...dates, ...range]
-      console.log('dates', dates);
     });
 
 
@@ -85,7 +82,7 @@ export const ListingItem: React.FC<ListingItemProps> = ({
     axios.post('/api/reservations', {
       totalPrice,
       startDate: dateRange.startDate,
-      enddDate: dateRange.endDate,
+      endDate: dateRange.endDate,
       listingId: listing.id
     })
       .then(() => {
@@ -95,7 +92,8 @@ export const ListingItem: React.FC<ListingItemProps> = ({
 
         router.refresh();
       })
-      .catch(() => {
+      .catch((error: any) => {
+        console.log('error', error);
         toast.error("something went wrong")
       })
       .finally(() => {
