@@ -11,6 +11,7 @@ import { Input } from '../inputs/Input';
 import { Button } from '../Button';
 import { signIn } from 'next-auth/react';
 import useLoginModal from '@/app/hooks/useLogInModal';
+import { toast } from 'react-hot-toast';
 
 export const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -35,6 +36,8 @@ export const RegisterModal = () => {
       .post('/api/register', data)
       .then(() => {
         registerModal.onClose();
+        toast.success('Success!!! Please, login with your credentials');
+        loginModal.onOpen();
       })
       .catch((error) => {
         throw new Error(error);

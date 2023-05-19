@@ -15,8 +15,8 @@ import { Range } from 'react-date-range';
 const initialDateRange = {
   startDate: new Date(),
   endDate: new Date(),
-  key: 'selection'
-}
+  key: 'selection',
+};
 interface ListingItemProps {
   listing: SafeListing & {
     user: SafeUser;
@@ -30,25 +30,26 @@ export const ListingItem: React.FC<ListingItemProps> = ({
   reservations = [],
 }) => {
   const loginModal = useLoginModal();
-  const router = useRouter()
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(listing.price)
-  const [dateRange, setDateRange] = useState<Range>(initialDateRange)
+  const [totalPrice, setTotalPrice] = useState(listing.price);
+  const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
-      const dayCount = differenceInCalendarDays(dateRange.endDate, dateRange.startDate)
+      const dayCount = differenceInCalendarDays(
+        dateRange.endDate,
+        dateRange.startDate
+      );
 
       if (dayCount && listing.price) {
-        setTotalPrice(dayCount * listing.price)
+        setTotalPrice(dayCount * listing.price);
       } else {
-        setTotalPrice(listing.price)
+        setTotalPrice(listing.price);
       }
     }
-
-
-  }, [dateRange, listing.price])
+  }, [dateRange, listing.price]);
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
@@ -56,21 +57,17 @@ export const ListingItem: React.FC<ListingItemProps> = ({
     reservations.forEach((reservation) => {
       const range = eachDayOfInterval({
         start: new Date(reservation.startDate),
-        end: new Date(reservation.endDate)
-      })
-      dates = [...dates, ...range]
+        end: new Date(reservation.endDate),
+      });
+      dates = [...dates, ...range];
     });
 
-
     return dates;
-  }, [reservations])
-
-
+  }, [reservations]);
 
   const category = useMemo(() => {
     return categories.find((item) => item.label === listing.category);
   }, [listing.category]);
-
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
@@ -79,27 +76,29 @@ export const ListingItem: React.FC<ListingItemProps> = ({
 
     setIsLoading(true);
 
-    axios.post('/api/reservations', {
-      totalPrice,
-      startDate: dateRange.startDate,
-      endDate: dateRange.endDate,
-      listingId: listing.id
-    })
+    axios
+      .post('/api/reservations', {
+        totalPrice,
+        startDate: dateRange.startDate,
+        endDate: dateRange.endDate,
+        listingId: listing.id,
+      })
       .then(() => {
         toast.success('listing reserved!');
-        setDateRange(initialDateRange)
+        setDateRange(initialDateRange);
         // Redirect to /trips
 
         router.refresh();
+        router.push('/trips');
       })
       .catch((error: any) => {
         console.log('error', error);
-        toast.error("something went wrong")
+        toast.error('something went wrong');
       })
       .finally(() => {
-        setIsLoading(false)
-      })
-  }, [totalPrice, dateRange, listing?.id, router, currentUser, loginModal])
+        setIsLoading(false);
+      });
+  }, [totalPrice, dateRange, listing?.id, router, currentUser, loginModal]);
 
   return (
     <div className='mx-auto max-w-screen-lg'>
@@ -121,7 +120,7 @@ export const ListingItem: React.FC<ListingItemProps> = ({
             bathroomCount={listing.bathroomCount}
             locationValue={listing.locationValue}
           />
-          <div className='order-first mb-10 md:order-last md:col-span-3' >
+          <div className='order-first mb-10 md:order-last md:col-span-3'>
             <ListingReservation
               price={listing.price}
               totalPrice={totalPrice}

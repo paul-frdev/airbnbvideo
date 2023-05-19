@@ -8,7 +8,7 @@ import { IParams, SafeReservation } from '@/app/types';
 
 const ListingPage = async ({ params }: { params: IParams }) => {
   const listing = await getListingById(params);
-  const reservations: SafeReservation[] = await getReservations(params)
+  const reservations: SafeReservation[] = await getReservations(params);
   const currentUser = await getCurrentUser();
 
   if (!listing) {
@@ -20,7 +20,11 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   }
   return (
     <Container>
-      <ListingItem listing={listing} currentUser={currentUser} reservations={reservations} />
+      <ListingItem
+        listing={listing}
+        currentUser={currentUser}
+        reservations={reservations}
+      />
     </Container>
   );
 };
