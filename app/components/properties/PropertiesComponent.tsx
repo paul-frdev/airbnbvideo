@@ -42,11 +42,7 @@ export const PropertiesComponent: FC<PropertiesComponentProps> = ({
 
   return (
     <Container>
-      <Heading
-        title='Properties'
-        subtitle='List of your properties'
-        center
-      />
+      <Heading title='Properties' subtitle='List of your properties' center />
       <div className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
         {listings.map((listing: SafeListing) => (
           <ListingCard

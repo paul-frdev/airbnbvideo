@@ -15,14 +15,12 @@ const PropertiesPage = async () => {
     ) : (
       <EmptyState
         title='No properties found'
-        subtitle="Looks like you have no properties"
+        subtitle='Looks like you have no properties'
       />
     );
   }
 
-  return (
-    <PropertiesComponent currentUser={currentUser} listings={listings} />
-  );
+  return <PropertiesComponent currentUser={currentUser} listings={listings} />;
 };
 
 export default PropertiesPage;

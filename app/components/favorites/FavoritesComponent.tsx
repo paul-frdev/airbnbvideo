@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { SafeListing, SafeUser } from '@/app/types';
 import React, { FC } from 'react';
 import { Container } from '../Container';

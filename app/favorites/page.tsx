@@ -15,7 +15,9 @@ const FavoritesPage = async () => {
       />
     );
   }
-  return <FavoritesComponent favorites={safeFavorites} currentUser={currentUser}/>;
+  return (
+    <FavoritesComponent favorites={safeFavorites} currentUser={currentUser} />
+  );
 };
 
 export default FavoritesPage;

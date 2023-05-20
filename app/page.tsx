@@ -5,13 +5,10 @@ import { EmptyState } from './components/EmptyState';
 import { ListingCard } from './components/listings/ListingCard';
 import { IListingsParams } from './types';
 
-
-
 interface HomeProps {
   searchParams: IListingsParams;
 }
 export default async function Home({ searchParams }: HomeProps) {
-  
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
