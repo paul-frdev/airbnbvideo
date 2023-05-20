@@ -9,8 +9,8 @@ export type SafeUser = Omit<
   emailVerified: string | null;
 };
 
-export type SafeListing = Omit<Listing, 'createAt'> & {
-  createAt: string;
+export type SafeListing = Omit<Listing, 'createdAt'> & {
+  createdAt: string;
 };
 
 export type SafeReservation = Omit<
@@ -25,4 +25,8 @@ export type SafeReservation = Omit<
 
 export interface IParams {
   listingId?: string;
+}
+
+export interface IListingsParams {
+  userId?: string;
 }
