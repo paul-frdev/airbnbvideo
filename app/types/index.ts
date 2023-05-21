@@ -29,4 +29,11 @@ export interface IParams {
 
 export interface IListingsParams {
   userId?: string;
+  roomsCount?: number;
+  guestsCount?: number;
+  bathroomCount?: number;
+  startDate?: string;
+  endDate?: string;
+  locationValue?: string;
+  category?: string;
 }
