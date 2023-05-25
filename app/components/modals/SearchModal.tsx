@@ -58,6 +58,8 @@ export const SearchModal = () => {
 
     if (params) {
       currentQuery = qs.parse(params.toString());
+      console.log('currentQuery', currentQuery);
+
     }
 
     const updatedQuery = {
@@ -66,6 +68,8 @@ export const SearchModal = () => {
       guestsCount,
       roomCount,
       bathroomCount,
+      startDate: '',
+      endDate: ''
     };
 
     if (dateRange.startDate) {
