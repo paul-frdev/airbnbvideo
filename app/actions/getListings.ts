@@ -31,7 +31,7 @@ export async function getListings(params: IListingsParams) {
     }
 
     if (guestsCount) {
-      query.guestsCount = {
+      query.guestCount = {
         gte: +guestsCount,
       };
     }

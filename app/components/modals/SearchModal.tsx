@@ -24,7 +24,7 @@ export const SearchModal = () => {
 
   const [location, setLocation] = useState<SelectCountryValue>();
   const [step, setStep] = useState<STEPS>(STEPS.LOCATION);
-  const [guestCount, setGuestCount] = useState(1);
+  const [guestsCount, setGuessCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
   const [bathroomCount, setBathroomCount] = useState(1);
   const [dateRange, setDateRange] = useState<Range>({
@@ -63,7 +63,7 @@ export const SearchModal = () => {
     const updatedQuery = {
       ...currentQuery,
       locationValue: location?.value,
-      guestCount,
+      guestsCount,
       roomCount,
       bathroomCount,
     };
@@ -92,7 +92,7 @@ export const SearchModal = () => {
     searchModal,
     location,
     router,
-    guestCount,
+    guestsCount,
     roomCount,
     bathroomCount,
     dateRange,
@@ -154,8 +154,8 @@ export const SearchModal = () => {
         <Counter
           title='Guests'
           subtitle='How many guests are coming?'
-          onChange={(value) => setGuestCount(value)}
-          value={guestCount}
+          onChange={(value) => setGuessCount(value)}
+          value={guestsCount}
         />
         <hr />
         <Counter
