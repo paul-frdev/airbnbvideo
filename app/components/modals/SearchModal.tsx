@@ -38,7 +38,7 @@ export const SearchModal = () => {
       dynamic(() => import('../Map'), {
         ssr: false,
       }),
-    [location]
+    []
   );
 
   const onBack = useCallback(() => {
@@ -49,7 +49,7 @@ export const SearchModal = () => {
     setStep((value) => value + 1);
   }, []);
 
-  const onSubmit = useCallback(async () => {
+  const onSubmit = useCallback(() => {
     if (step !== STEPS.INFO) {
       return onNext();
     }
@@ -59,7 +59,6 @@ export const SearchModal = () => {
     if (params) {
       currentQuery = qs.parse(params.toString());
       console.log('currentQuery', currentQuery);
-
     }
 
     const updatedQuery = {
@@ -69,7 +68,7 @@ export const SearchModal = () => {
       roomCount,
       bathroomCount,
       startDate: '',
-      endDate: ''
+      endDate: '',
     };
 
     if (dateRange.startDate) {
