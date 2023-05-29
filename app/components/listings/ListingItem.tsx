@@ -18,9 +18,7 @@ const initialDateRange = {
   key: 'selection',
 };
 interface ListingItemProps {
-  listing: SafeListing & {
-    user: SafeUser;
-  };
+  listing: any;
   currentUser: SafeUser | null;
   reservations?: SafeReservation[];
 }

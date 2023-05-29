@@ -4,7 +4,7 @@ import { getReservations } from '@/app/actions/getReservations';
 import { Container } from '@/app/components/Container';
 import { EmptyState } from '@/app/components/EmptyState';
 import { ListingItem } from '@/app/components/listings/ListingItem';
-import { IParams, SafeReservation } from '@/app/types';
+import { IParams, SafeListing, SafeReservation, SafeUser } from '@/app/types';
 
 const ListingPage = async ({ params }: { params: IParams }) => {
   const listing = await getListingById(params);
